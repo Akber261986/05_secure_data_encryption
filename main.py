@@ -5,7 +5,6 @@ import os
 import json
 
 # Global variable declaration
-# Global declaration (required by your teacher)
 global failed_attempts
 failed_attempts = st.session_state.get("failed_attempts", 0)
 
@@ -27,13 +26,15 @@ def load_key():
 KEY = load_key()
 cipher = Fernet(KEY)
 
+# Function to load json file
 def load_data():
     if os.path.exists(stored_data):
         with open(stored_data, "r") as file:
             return json.load(file)
     else:
         return []
-        
+
+# Function to save new file
 def save_data(data):
     with open(stored_data, "w") as file:
         json.dump(data, file, indent=4)
